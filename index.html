@@ -19,6 +19,15 @@
     <div id="app">
         {{ message }}
     </div>
+    <div id="app-2" class="demo">
+        <span v-bind:title="message">
+                Hover your mouse over me for a few seconds
+                to see my dynamically bound title!           
+        </span>
+    </div>
+    <div id="app-3">
+        <span v-if="seen">Now you see me</span>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -28,7 +37,35 @@
                 message: 'Hello Vue!'
             }
         });
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: 'You loaded this page on ' + new Date().toLocaleString()
+            }
+        });
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: true
+            }
+        });
     </script>
+    <style>
+        #demo,
+        .demo,
+        .content .demo {
+            border: 1px solid #eee;
+            border-radius: 2px;
+            padding: 25px 35px;
+            margin-top: 1em;
+            margin-bottom: 40px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-x: auto;
+        }
+    </style>
 </body>
 
 </html>
